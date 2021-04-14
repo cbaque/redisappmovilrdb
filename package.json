@@ -1,6 +1,6 @@
 {
-  "name": "redisApp",
-  "version": "2.0.0",
+  "name": "redisAppRdb",
+  "version": "1.0.0",
   "author": "Redisimex",
   "homepage": "https://www.redisimex.com/",
   "scripts": {

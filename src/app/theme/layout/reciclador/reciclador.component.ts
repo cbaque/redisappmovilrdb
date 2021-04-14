@@ -97,7 +97,7 @@ export class RecicladorComponent implements OnInit, OnDestroy {
       apellido          : this.f.apellido.value,
       telefono          : this.f.telefono.value,      
       rol               : CONFIG_GENERAL_SISTEMA.RECICLADOR_BASE,
-      app               : 'APP'
+      app               : 'APP_RDB'
     };    
 
     // const data: Reciclador = {

@@ -66,7 +66,7 @@ export class AuthSigninGoPage implements OnInit, OnDestroy{
     const data = {
       user : this.f.usuario.value,
       password: this.f.password.value,
-      movil: 'APP'
+      movil: 'APP_RDB'
     };
 
     this.loadingSrv.presentLoading();

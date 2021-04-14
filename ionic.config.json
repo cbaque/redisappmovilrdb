@@ -1,5 +1,5 @@
 {
-  "name": "redisApp",
+  "name": "redisAppRdb",
   "integrations": {
     "cordova": {}
   },

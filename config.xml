@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.redisimex.redisapp" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Redis</name>
+<widget id="com.redisimex.redisapprdb" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Redis RDB</name>
     <description>Bienvenido a la Herramienta que te Informa del Aprovechamiento de Residuos y el Desarrollo a la Economía Circular.</description>
     <author email="redisimexsa@gmail.com" href="https://www.redisimex.com/">Redisimex</author>
     <content src="index.html" />
