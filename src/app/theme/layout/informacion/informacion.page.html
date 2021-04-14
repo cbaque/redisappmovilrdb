@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center" >Notificaci&oacute;n</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-text color="dark" class="ion-text-center">
+          <h5><strong>Consumidor o Generador</strong></h5>
+        </ion-text>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <img src="assets/images/dashboard/consumidor.svg" height="70px">
+      </ion-col>
+      <ion-col size="12">
+        <ion-text color="dark" class="ion-text-center">
+          <h6>Quiero clasificar y entregar mis residuos RECICLABLES y APROBECHABLES.</h6>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-text color="dark" class="ion-text-center">
+          <h5><strong>Reciclador de Base</strong></h5>
+        </ion-text>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <img src="assets/images/dashboard/reciclador.svg" height="70px">
+      </ion-col>
+      <ion-col size="12">
+        <ion-text color="dark" class="ion-text-center">
+          <h6>Quiero que me contactes para llevarme tus RESIDUOS RECICLABLES clasificados.</h6>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-text color="dark" class="ion-text-center">
+          <h5><strong>Centro de Acopio o Recuperador</strong></h5>
+        </ion-text>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <img src="assets/images/dashboard/recuperador.svg" height="70px">
+      </ion-col>
+      <ion-col size="12">
+        <ion-text color="dark" class="ion-text-center">
+          <p>-Compro materiales reciclables para volverlos a convertir en materias primas.</p>
+          <p>-Restauro y refacciono.</p>
+          <p>-Vendo y alquilo productos usados.</p>
+          
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
+  
+  
+  <ion-button (click)="closeModal()" expand="block" fill="clear" shape="round" color="secondary"> 
+    Aceptar
+  </ion-button>
+</ion-content>

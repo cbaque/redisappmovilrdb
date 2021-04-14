@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Selecciona la ubicaci&oacute;n de la recolecci&oacute;n</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding-start ion-padding-end">
+  
+  <ion-grid fixed>
+    <form  [formGroup]="direccionForm">
+
+      <ion-row>
+        <ion-col size="12">
+  
+          <ion-list class="ion-no-padding">
+          
+            <ion-item class="ion-no-padding-top">
+              <ion-label>Seleccionar</ion-label>
+              <ion-select value="" okText="Aceptar" cancelText="Cancelar" (ionFocus)="getItems()" formControlName="direccion">
+                <ion-select-option value="">Ninguno</ion-select-option>
+                <ng-container *ngIf="direcciones.length">
+                  <ion-select-option *ngFor="let item of direcciones" value="{{ item.id_direccion_usuario }}">{{ item.nombre_direccion }}</ion-select-option>
+                </ng-container>
+              </ion-select>
+            </ion-item>
+          
+          </ion-list>
+  
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12" class="ion-text-center">
+          
+          <ion-note color="medium" (click)="showModalNuevaDireccion()" >Agregar Ubicaci&oacute;n</ion-note>
+          
+        </ion-col>
+      </ion-row>
+      
+      <ion-item-divider></ion-item-divider>
+        
+      <ion-row>
+        <ion-col size="6">
+          <ion-button (click)="cancelDireccion()" expand="block" fill="clear" shape="round" color="secondary"> 
+            Cancelar
+          </ion-button>        
+        </ion-col>
+        <ion-col size="6">
+          <ion-button (click)="nextDireccion()" 
+            expand="block" 
+            fill="solid" 
+            shape="round" 
+            color="primary"> 
+            Aceptar
+          </ion-button>        
+        </ion-col>
+      </ion-row>    
+    </form>
+  </ion-grid>
+
+</ion-content>

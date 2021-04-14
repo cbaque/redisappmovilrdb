@@ -1,0 +1,87 @@
+<ion-header [translucent]="true" class="no-border" mode="ios">
+  <ion-toolbar>
+    <div class="ion-text-center" >
+      <img src="assets/images/login/logo.svg" class="img-dashboard">
+    </div>
+    <div class="ion-padding-top">
+      <ion-title size="large" class="ion-text-center title-dashboard" >Ya eres parte del cambio.</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-start ion-padding-end">
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <ion-text color="medium">
+          <h6>Agregar ubicaci&oacute;n</h6>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <form [formGroup]="direccionForm" (ngSubmit)="onSubmit()">
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item lines="none">
+            <ion-icon src="assets/gps.svg" class="ion-padding-end" item-start size="large"></ion-icon>
+            <ion-input class="ion-padding-start" placeholder="Direcci&oacute;n" formControlName="direccion"></ion-input>                
+          </ion-item>                     
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-item lines="none">
+            <ion-icon src="assets/casa.svg" class="ion-padding-end" item-start size="large"></ion-icon>
+            <ion-input class="ion-padding-start" placeholder="Referencia" formControlName="referencia"></ion-input>                
+          </ion-item>                     
+        </ion-col>
+
+
+        <ion-col size="12">
+          <ion-item lines="none">
+            <ion-icon src="assets/casa.svg" class="ion-padding-end" item-start size="large"></ion-icon>
+            <ion-input class="ion-padding-start" placeholder="Nombre de la Ubicaci&oacute;n *" formControlName="nombre"></ion-input>                
+
+            <div *ngIf="f.nombre.errors && (direccionForm.get('nombre').dirty || direccionForm.get('nombre').touched) ; then iconerror"></div>
+            <ng-template #iconerror> <ion-icon slot="end" name="information-circle-outline" color="danger"></ion-icon></ng-template>                             
+          </ion-item>   
+          <ng-container>
+            <ion-text color="danger" *ngIf="direccionForm.get('nombre').hasError('required') && (direccionForm.get('nombre').dirty || direccionForm.get('nombre').touched)">
+              El nombre de la Ubicaci&oacute;n es requerido
+            </ion-text>
+          </ng-container>                               
+        </ion-col>        
+
+      </ion-row>   
+
+      <ion-row>
+        <ion-col size="12">
+          <app-mapa [form]="direccionForm"></app-mapa>
+        </ion-col>
+      </ion-row>      
+      
+      
+      <ion-row>
+        <ion-col size="6">
+          <ion-button (click)="closeModal()" expand="block" fill="clear" shape="round" color="secondary"> 
+            Cancelar
+          </ion-button>        
+        </ion-col>
+        <ion-col size="6">
+          <ion-button
+            type="submit" 
+            expand="block" 
+            fill="solid" 
+            shape="round" 
+            [disabled]="direccionForm.invalid"
+            color="primary"> 
+            Aceptar
+          </ion-button>        
+        </ion-col>
+      </ion-row>          
+
+    </form>
+  </ion-grid>
+
+</ion-content>  

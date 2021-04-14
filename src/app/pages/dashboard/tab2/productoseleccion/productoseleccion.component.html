@@ -1,0 +1,63 @@
+<ion-grid>
+  <ion-row>
+    <ion-col size="12"> 
+      <ion-text color="dark" class="ion-text-center">
+        <h6>Selecciona los materiales que vas a reciclar</h6>
+      </ion-text> 
+    </ion-col>
+  </ion-row>  
+  <ion-row>
+    <ion-col size="12">
+
+      <form [formGroup]="form">
+        <ng-container *ngIf="arrayProductos.length; else loading">
+
+
+          <ion-row>
+            <ng-container formArrayName="productos">         
+      
+              <ng-container [formGroupName]="i" *ngFor="let item of arrayProductos.controls; index as i">
+
+                <ion-col size="4">
+        
+                  <ion-tab-button (click)="activeButton( i )">
+                    <ion-icon src="{{ item.get('direccion_logo').value }}" size="large"></ion-icon>
+                    <ion-label>{{ item.get('descripcion').value }}</ion-label>
+                    <ion-badge [color]=" item.get('selected').value ? 'primary' : 'success' " class="ion-align-self-start">{{ item.get('cantidad').value }}</ion-badge>
+                  </ion-tab-button>
+
+                  <!-- <ion-button 
+                    style="width: 90%; height: 50px;" 
+                    [color]=" item.get('selected').value ? 'primary' : 'light' " 
+                    (click)="activeButton( i )">
+                    <ion-icon src="{{ item.get('direccion_logo').value }}" size="large"></ion-icon>
+                    <ion-badge color="success" class="ion-align-self-start">{{ item.get('cantidad').value }}</ion-badge>
+                  </ion-button>  -->
+
+                </ion-col>
+
+              </ng-container>
+                    
+            </ng-container>         
+          </ion-row>
+      
+        </ng-container>
+      
+        <ng-template #loading>
+
+          <ion-row>
+            <ion-col size="4" *ngFor="let data of [1,2,3,4,5,6,7]">
+              <ion-skeleton-text animated style="width: 90%; height: 50px; border-radius: 5px;"></ion-skeleton-text>
+            </ion-col>
+          </ion-row>
+
+        </ng-template>
+      </form>        
+
+    </ion-col>
+  </ion-row>
+
+</ion-grid>
+
+
+

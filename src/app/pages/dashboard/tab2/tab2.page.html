@@ -1,0 +1,54 @@
+  <ion-header [translucent]="true" class="no-border" mode="ios">
+    <ion-toolbar>
+      <div class="ion-text-center" >
+        <img src="assets/images/login/logo.svg" class="img-dashboard">
+      </div>
+      <div class="ion-padding-top">
+        <ion-title size="large" class="ion-text-center title-dashboard" >Estas preparando tu próxima solicitud de RETIRO</ion-title>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <ion-content [fullscreen]="true" class="ion-padding-start ion-padding-end">
+
+    <!-- *ngIf=" usuario.opcion === 1; else menuDos" -->
+    <ng-container>
+      <form [formGroup]="reciclarForm" (ngSubmit)="onSubmit()">
+
+        <app-productoseleccion [form]="reciclarForm"></app-productoseleccion>
+  
+        <app-digital [form]="reciclarForm"></app-digital>
+  
+        <app-segmentos [form]="reciclarForm"></app-segmentos>
+  
+        <ion-row>
+          <ion-col size="4" class="ion-padding" >
+            <ion-icon name="notifications-circle" color="success" size="large"></ion-icon>
+          </ion-col>
+          <ion-col size="8">
+            <ion-text color="dark ">
+              <h6>Alarma activada</h6>
+            </ion-text>
+          </ion-col>    
+        </ion-row>
+      
+        <ion-row>
+          <!-- <ion-col size="12" class="ion-no-padding">
+            <ion-text color="dark" class="ion-text-center">
+              <h6>Total $0.00</h6>
+            </ion-text>
+          </ion-col> -->
+          <ion-col size="12" class="ion-no-padding">
+            <ion-button [disabled]="reciclarForm.invalid" shape="round" expand="block" type="submit">Enviar</ion-button>
+          </ion-col>
+        </ion-row>   
+  
+      </form>      
+    </ng-container>  
+    
+    <!-- <ng-template #menuDos>
+      <app-landing-reciclador-tab2 [data]="agenda"></app-landing-reciclador-tab2>
+    </ng-template>     -->
+
+  </ion-content>  

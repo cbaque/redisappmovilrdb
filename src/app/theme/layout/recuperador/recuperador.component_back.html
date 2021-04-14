@@ -1,0 +1,256 @@
+<ion-content class="ion-padding-top ion-padding-bottom">
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+
+      <ion-col class="ion-align-self-center">
+
+        <app-logo-usuarios [title]="title" [subtitle]="subtitle"></app-logo-usuarios>  
+        
+        <form [formGroup]="recuperadorForm" (ngSubmit)="onSubmit()">
+          <div class="ion-padding-top ion-padding-bottom">
+        
+            <ion-row>
+              <ion-col size="12">
+                <ion-item lines="none">
+                  <ion-icon name="person-circle-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+                  <ion-label color="medium">Tipo Persona *</ion-label>
+                  <ion-select interface="action-sheet" formControlName="tipo_persona">
+                    <ion-select-option *ngFor="let item of lisTipoPersona | async" [value]="item.id">{{ item.nombre }}</ion-select-option>
+                  </ion-select>
+                </ion-item>      
+          
+              </ion-col>
+            </ion-row>
+        
+            <ion-row>
+              <ion-col size="12">
+                <ion-item lines="none">
+                  <ion-icon src="assets/cedula.svg" class="ion-padding-end" item-start size="large"></ion-icon>
+                  <ion-input class="ion-padding-start" 
+                  formControlName="ruc_ci"
+                  type="text" placeholder="RUC/C&eacute;dula *"></ion-input>    
+                  
+                  <div *ngIf="f.ruc_ci.errors && (recuperadorForm.get('ruc_ci').dirty || recuperadorForm.get('ruc_ci').touched) ; then iconerror"></div>
+                  <ng-template #iconerror> <ion-icon slot="end" name="information-circle-outline" color="danger"></ion-icon></ng-template>          
+        
+                </ion-item>    
+                
+                <ng-container *ngFor="let validation of validator.validationMessages.ruc_ci">
+                  <ion-text 
+                    color="danger" 
+                    class="ion-text-left" 
+                    *ngIf="recuperadorForm.get('ruc_ci').hasError(validation.type) && (recuperadorForm.get('ruc_ci').dirty || recuperadorForm.get('ruc_ci').touched)">
+                    {{ validation.message }}
+                  </ion-text>
+                </ng-container>          
+        
+              </ion-col>
+            </ion-row>
+        
+            <ion-row>
+              <ion-col size="12" class="ion-text-end">
+                <ion-item lines="none">
+                  <ion-icon name="person-circle-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+                  <ion-input type="text" 
+                  formControlName="username"
+                  placeholder="Usuario *"></ion-input> 
+                  
+                  <div *ngIf="f.username.errors && (recuperadorForm.get('username').dirty || recuperadorForm.get('username').touched) ; then iconerror"></div>
+                  <ng-template #iconerror> <ion-icon slot="end" name="information-circle-outline" color="danger"></ion-icon></ng-template>
+        
+                </ion-item>  
+                <ng-container *ngFor="let validation of validator.validationMessages.username">
+                  <ion-text color="danger" *ngIf="recuperadorForm.get('username').hasError(validation.type) && (recuperadorForm.get('username').dirty || recuperadorForm.get('username').touched)">
+                    {{ validation.message }}
+                  </ion-text>
+                </ng-container>        
+                                 
+              </ion-col>
+            </ion-row> 
+        
+        
+            <ion-row>
+              <ion-col size="12">
+                <ion-item lines="none">
+                  <ion-icon name="lock-closed-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+                  <ion-input class="ion-padding-start" 
+                  formControlName="contrasenia"
+                  type="password" placeholder="Contraseña *"></ion-input>   
+                  
+                  <div *ngIf="f.contrasenia.errors && (recuperadorForm.get('contrasenia').dirty || recuperadorForm.get('contrasenia').touched) ; then iconerror"></div>
+                  <ng-template #iconerror> <ion-icon slot="end" name="information-circle-outline" color="danger"></ion-icon></ng-template>          
+                  
+                </ion-item>   
+        
+                <ng-container *ngFor="let validation of validator.validationMessages.contrasenia">
+                  <ion-text 
+                    color="danger" 
+                    class="ion-text-left" 
+                    *ngIf="recuperadorForm.get('contrasenia').hasError(validation.type) && (recuperadorForm.get('contrasenia').dirty || recuperadorForm.get('contrasenia').touched)">
+                    {{ validation.message }}
+                  </ion-text>
+                </ng-container>  
+                
+              </ion-col>
+            </ion-row>
+        
+            <ion-row>
+              <ion-col size="12">
+                <ion-item lines="none">
+                  <ion-icon name="lock-closed-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+                  <ion-input class="ion-padding-start" 
+                  formControlName="confirmPassword"
+                  type="password" placeholder="Repetir Contraseña *"></ion-input> 
+                  
+                  <div *ngIf="f.confirmPassword.errors && (recuperadorForm.get('confirmPassword').dirty || recuperadorForm.get('confirmPassword').touched) ; then iconerror"></div>
+                  <ng-template #iconerror> <ion-icon slot="end" name="information-circle-outline" color="danger"></ion-icon></ng-template>                      
+                  
+                </ion-item>  
+        
+                <ng-container *ngFor="let validation of validator.validationMessages.contrasenia">
+                  <ion-text 
+                    color="danger" 
+                    class="ion-text-left" 
+                    *ngIf="recuperadorForm.get('confirmPassword').hasError(validation.type) && (recuperadorForm.get('confirmPassword').dirty || recuperadorForm.get('confirmPassword').touched)">
+                    {{ validation.message }}
+                  </ion-text>
+                </ng-container>  
+                
+              </ion-col>
+            </ion-row>                
+        
+            <ion-row>
+              <ion-col size="12">
+                <ion-item lines="none">
+                  <ion-icon name="mail-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+                  <ion-input class="ion-padding-start" 
+                  formControlName="correo_electronico"
+                  type="text" placeholder="Correo electr&oacute;nico *"></ion-input>    
+                  
+                  <div *ngIf="f.correo_electronico.errors && (recuperadorForm.get('correo_electronico').dirty || recuperadorForm.get('correo_electronico').touched) ; then iconerror"></div>
+                  <ng-template #iconerror> <ion-icon slot="end" name="information-circle-outline" color="danger"></ion-icon></ng-template>            
+        
+                </ion-item>  
+                
+                <ng-container *ngFor="let validation of validator.validationMessages.correo_electronico">
+                  <ion-text color="danger" class="ion-text-left" *ngIf="recuperadorForm.get('correo_electronico').hasError(validation.type) && (recuperadorForm.get('correo_electronico').dirty || recuperadorForm.get('correo_electronico').touched)">
+                    {{ validation.message }}
+                  </ion-text>
+                </ng-container>           
+        
+              </ion-col>
+            </ion-row>  
+            
+            <ion-row>
+              <ion-col size="12">
+                <ion-item>
+                  <ion-icon name="calendar-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+                  <ion-label>Inicio Actividades *</ion-label>
+                  <ion-datetime formControlName="inicio_actividades" displayFormat="DD/MM/YYYY" placeholder="Seleccione"></ion-datetime>
+        
+                  <!-- <div *ngIf="f.inicio_actividades.errors && (recuperadorForm.get('inicio_actividades').dirty || recuperadorForm.get('inicio_actividades').touched) ; then iconerror"></div>
+                  <ng-template #iconerror> <ion-icon slot="end" name="information-circle-outline" color="danger"></ion-icon></ng-template>              -->
+        
+                </ion-item>
+                
+                <ng-container *ngFor="let validation of validator.validationMessages.inicio_actividades">
+                  <ion-text color="danger" class="ion-text-left" *ngIf="recuperadorForm.get('inicio_actividades').hasError(validation.type) && (recuperadorForm.get('inicio_actividades').dirty || recuperadorForm.get('inicio_actividades').touched)">
+                    {{ validation.message }}
+                  </ion-text>
+                </ng-container>          
+        
+              </ion-col>
+            </ion-row>  
+            
+            <ion-row>
+              <ion-col size="12">
+                <ion-item lines="none">
+                  <ion-icon name="call" class="ion-padding-end" item-start size="large"></ion-icon>
+                  <ion-input class="ion-padding-start"
+                  formControlName="telefono"
+                   type="text" placeholder="Tel&eacute;fono"></ion-input>                
+                </ion-item>                     
+              </ion-col>
+            </ion-row>
+        
+            <ion-row>
+              <ion-col size="12">
+                <ion-item lines="none">
+                  <ion-icon class="ion-padding-end" src="assets/direccion.svg" item-start size="large"></ion-icon>
+                  <ion-textarea formControlName="direccion" placeholder="Direcci&oacute;n de domicilio" rows="3"></ion-textarea>
+                </ion-item>                    
+              </ion-col>
+            </ion-row>
+        
+            <ion-row>
+              <ion-col size="12">
+                <ion-list-header>
+                  <ion-label color="light" class="ion-text-center">Dibuje Sector</ion-label>
+                </ion-list-header>
+        
+                <app-mapa-sector [form]="recuperadorForm"></app-mapa-sector>
+        
+              </ion-col>
+            </ion-row>
+        
+            <ion-row>
+              <ion-col size="12">
+                <ion-radio-group formControlName="asociado" mode="md">
+                  <ion-list-header>
+                    <ion-label color="light">¿Se encuentra asociado a alguna asociación?</ion-label>
+                  </ion-list-header>
+                  
+                  <ion-toggle color="secondary" mode="ios"></ion-toggle>
+        
+                </ion-radio-group>                    
+              </ion-col>
+            </ion-row>
+            
+            <ion-row>
+              <ion-col size="12">
+                <ion-list-header>
+                  <ion-label color="light">Seleccione los materiales que va a reciclar</ion-label>
+                </ion-list-header>
+                <app-productos [form]="recuperadorForm"></app-productos>
+              </ion-col>
+            </ion-row>  
+        
+            <ion-row>
+              <ion-col size="12">
+                <ion-list-header>
+                  <ion-label color="light">Seleccione los d&iacute;as y horario de recolecci&oacute;n</ion-label>
+                </ion-list-header>
+                <app-dias-recoleccion [form]="recuperadorForm"></app-dias-recoleccion>
+              </ion-col>
+            </ion-row>
+        
+            <ion-row>
+              <ion-col size="12">
+                <ion-button shape="round" 
+                  expand="block" 
+                  fill="solid" 
+                  size="large"
+                  type="submit"
+                  [disabled]="recuperadorForm.invalid"
+                  color="secondary">Reg&iacute;strate
+                  
+                </ion-button>                    
+              </ion-col>
+            </ion-row> 
+            
+            <ion-row>
+              <ion-col size="12" class="ion-text-center">
+                <a routerLink="/auth/signin">Volver</a>
+              </ion-col>
+            </ion-row>
+            
+          </div>  
+        </form>
+
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

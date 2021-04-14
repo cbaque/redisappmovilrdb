@@ -1,0 +1,80 @@
+<ion-grid fixed>
+  <ion-row>
+    <ion-col size="12" class="ion-text-center">
+      <ion-button 
+        shape="round" 
+        fill="solid" 
+        size="medium"
+        type="button"
+        color="secondary">Entregas por confirmar
+      </ion-button>         
+    </ion-col>    
+  </ion-row>
+  <ion-row>
+    <ion-col size="7"><small>Agenda de Recolecci&oacute;n</small></ion-col>
+    <ion-col size="5" class="ion-text-end ion-no-padding">
+      <ion-chip size="12" color="dark">
+        <ion-label><small>{{ fechActual | date:'mediumDate' }}</small></ion-label>
+        <ion-icon name="calendar" color="dark"></ion-icon>
+      </ion-chip>
+    </ion-col>
+  </ion-row>
+
+
+
+  <ng-container *ngIf="agenda.length; else loading">
+    <ion-row>
+      <ion-card class="ion-no-padding ion-no-margin">
+        <ion-card-content class="ion-no-padding ion-no-margin">
+            
+            <ng-container *ngFor="let item of agenda">
+              <ion-list>
+                <ion-item-sliding>
+                  <ion-item lines="full">
+  
+                    <ion-label color="dark">
+                      <p><ion-icon slot="start" class="ion-padding-end" src="assets/images/dashboard/gps.svg"></ion-icon>{{ item.direccion }}</p>
+                      <h6><ion-icon slot="start" class="ion-padding-end" name="person"></ion-icon>{{ item.nombre }}</h6>
+                      <h6>
+                        <ion-icon slot="start" class="ion-padding-end" name="time"></ion-icon>{{ item.hora }}
+                      </h6>
+                    </ion-label>
+  
+                  </ion-item>  
+                  
+                  <ion-item-options side="end">
+                    <ion-item-option color="light">  
+                      <ion-icon name="menu" size="large"></ion-icon>
+                    </ion-item-option>  
+                    
+                    <ion-item-option color="success" (click)="goConfirmEntrega(item.id_cabecera)">  
+                      <ion-icon name="checkmark-circle" size="large"></ion-icon>
+                    </ion-item-option>
+                  
+                  </ion-item-options>                
+                </ion-item-sliding>              
+  
+  
+              </ion-list>  
+            </ng-container>         
+                
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ng-container>
+
+  <ng-template #loading>
+
+    <ion-row>
+      <ion-col size="12" *ngFor="let data of [1,2]">
+        <ion-skeleton-text animated style="width: 100%; height: 70px; border-radius: 5px;"></ion-skeleton-text>
+      </ion-col>
+    </ion-row>
+
+  </ng-template>
+
+
+</ion-grid>
+
+
+

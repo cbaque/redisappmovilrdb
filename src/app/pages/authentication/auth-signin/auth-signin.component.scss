@@ -1,0 +1,49 @@
+ion-content{
+    // --background: #13CE66;
+    // --background: -webkit-linear-gradient(bottom, #097338, #13CE66);
+    // --background: url('assets/imgs/testPic.jpg')  0 0/50% 10% no-repeat;
+    --background: url("../../../../assets/images/login/login-fondo.jpg") no-repeat cover fixed center;
+    background: url('../../../../assets/images/login/login-fondo.jpg') no-repeat fixed center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+ion-text {
+    color: #FFFFFF !important;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19.5px;
+    text-align: center;
+}
+
+.bottom-login {
+    position: fixed;
+    bottom: 40px;
+    width: 100%;
+}
+
+.login-opacity {
+    opacity: 0.4 !important;
+}
+
+.texto-boton-redis {
+    color: #FFFFFF;
+}
+
+ion-img{
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.footer-init {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}

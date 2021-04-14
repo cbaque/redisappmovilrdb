@@ -1,0 +1,29 @@
+ion-item {
+    --background: #D8DEE5;
+    border-radius: 50px;
+}
+
+ion-icon{
+    color: #343F4B;
+}
+
+ion-input {
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19.5px;
+}
+
+a{
+    color: #D8DEE5;
+    text-decoration: none !important;
+}
+
+ion-textarea {
+    border-radius: 10.5px;
+}
+
+// ion-content{
+//     --background: #13CE66;
+//     --background: -webkit-linear-gradient(bottom, #097338, #13CE66);
+// }

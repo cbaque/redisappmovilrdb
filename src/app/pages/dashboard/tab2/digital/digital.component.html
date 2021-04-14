@@ -1,0 +1,33 @@
+<ion-grid fixed>
+  <ion-row>
+    <ion-col size="12">
+
+      <ion-row class="ion-text-center">
+        <ion-col size="12">
+          <small>Si tienes bolsas de separaci&oacute;n REDIS</small>
+        </ion-col>
+      </ion-row>
+
+      <ion-button expand="block" color="light">
+        <ion-icon slot="start" name="ellipse" color="medium"></ion-icon>
+        <small>Escanea el QR y gana Puntos!!</small>
+      </ion-button>
+    </ion-col>        
+    <ion-col size="12">
+      <ion-button expand="block" color="light" (click)="activaCamara()">
+        <ion-icon slot="start" name="ellipse" color="medium"></ion-icon>
+        Foto de los Paquetes
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <form [formGroup]="form">
+    <ion-row>
+      <ion-col size="6" *ngFor=" let image of tmpimages ">
+        <ion-card>
+          <img [src]="image | imageSanitizer">
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-grid>

@@ -1,0 +1,220 @@
+
+<ion-header [translucent]="true" class="no-border" mode="ios">
+  <ion-toolbar>
+    <div class="ion-text-center" >
+      <img src="assets/images/login/logo.svg" class="img-dashboard">
+    </div>
+    <div class="ion-padding-top">
+      <ion-title size="large" class="ion-text-center title-dashboard" >Ya eres parte del cambio.</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-text color="medium" class="ion-text-center">
+          <h6>Mi aporte al planeta</h6>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <!-- <ion-row>
+      <ion-col size="12">
+
+        <ion-card *ngIf=" segmentModel === 'agua' ">
+          <ion-card-content>
+            <div id="chart">
+              <apx-chart></apx-chart>
+            </div>                      
+          </ion-card-content>
+        </ion-card>
+    
+        <ion-card *ngIf=" segmentModel === 'electricidad' ">
+          <ion-card-content>
+            electricidad
+          </ion-card-content>
+        </ion-card>  
+        
+        <ion-card *ngIf=" segmentModel === 'dinero' ">
+          <ion-card-content>
+            dinero
+          </ion-card-content>
+        </ion-card>      
+
+      </ion-col>
+    </ion-row> -->
+
+
+    <ion-row>
+      <ion-col size="12">
+
+        <ion-segment value="all" color="success" [(ngModel)]="segmentModel">
+          <ion-segment-button value="agua">
+            <ion-icon name="flame"></ion-icon>
+          </ion-segment-button>
+          <ion-segment-button value="electricidad">
+            <ion-icon name="flash"></ion-icon>
+          </ion-segment-button>
+          <ion-segment-button value="dinero">
+            <ion-icon name="logo-usd"></ion-icon>
+          </ion-segment-button>
+        </ion-segment>   
+
+      </ion-col>
+    </ion-row>    
+
+    <form [formGroup]="userForm" (ngSubmit)="saveUsuario()">
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item lines="none">
+            <ion-icon name="person-circle-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+            <ion-input type="text"
+            formControlName="username"
+            placeholder="Nombre"></ion-input>       
+            
+            <div *ngIf="f.username.errors && (userForm.get('username').dirty || userForm.get('username').touched) ; then iconerror"></div>
+            <ng-template #iconerror> <ion-icon slot="end" name="information-circle-outline" color="danger"></ion-icon></ng-template>            
+
+          </ion-item> 
+          
+          <ng-container *ngFor="let validation of validator.validationMessages.username">
+            <ion-text color="danger" *ngIf="userForm.get('username').hasError(validation.type) && (userForm.get('username').dirty || userForm.get('username').touched)">
+              {{ validation.message }}
+            </ion-text>
+          </ng-container>              
+          
+        </ion-col>
+      </ion-row>
+    
+      <ion-row>
+        <ion-col size="12">
+          <ion-item lines="none">
+            <ion-icon name="lock-closed-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+            <ion-input type="password"
+            formControlName="contrasenia"
+            placeholder="Contraseña"></ion-input>    
+            
+            <div *ngIf="f.contrasenia.errors && (userForm.get('contrasenia').dirty || userForm.get('contrasenia').touched) ; then iconerror"></div>
+            <ng-template #iconerror> <ion-icon slot="end" name="information-circle-outline" color="danger"></ion-icon></ng-template>
+
+          </ion-item> 
+
+          <ng-container *ngFor="let validation of validator.validationMessages.contrasenia">
+            <ion-text 
+              color="danger" 
+              class="ion-text-left" 
+              *ngIf="userForm.get('contrasenia').hasError(validation.type) && (userForm.get('contrasenia').dirty || userForm.get('contrasenia').touched)">
+              {{ validation.message }}
+            </ion-text>
+          </ng-container>           
+          
+        </ion-col>
+      </ion-row>  
+    
+    
+      <ion-row>
+        <ion-col size="12">
+          <ion-item lines="none">
+            <ion-icon name="lock-closed-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+            <ion-input type="password"
+            formControlName="confirmPassword"
+            placeholder="Repetir Contraseña"></ion-input>     
+            
+            <div *ngIf="f.confirmPassword.errors && (userForm.get('confirmPassword').dirty || userForm.get('confirmPassword').touched) ; then iconerror"></div>
+            <ng-template #iconerror> <ion-icon slot="end" name="information-circle-outline" color="danger"></ion-icon></ng-template>                        
+            
+          </ion-item>  
+          
+          <ng-container *ngFor="let validation of validator.validationMessages.contrasenia">
+            <ion-text 
+              color="danger" 
+              class="ion-text-left" 
+              *ngIf="userForm.get('confirmPassword').hasError(validation.type) && (userForm.get('confirmPassword').dirty || userForm.get('confirmPassword').touched)">
+              {{ validation.message }}
+            </ion-text>
+          </ng-container>            
+          
+        </ion-col>
+      </ion-row>  
+      
+      <ion-row>
+        <ion-col size="12">
+          <ion-item lines="none">
+            <ion-icon name="mail-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+            <ion-input type="email"
+            formControlName="correo_electronico" 
+            placeholder="Correo electr&oacute;nico"></ion-input>   
+            
+            <div *ngIf="f.correo_electronico.errors && (userForm.get('correo_electronico').dirty || userForm.get('correo_electronico').touched) ; then iconerror"></div>
+            <ng-template #iconerror> <ion-icon slot="end" name="information-circle-outline" color="danger"></ion-icon></ng-template>                                       
+
+          </ion-item> 
+          
+          <ng-container *ngFor="let validation of validator.validationMessages.correo_electronico">
+            <ion-text color="danger" class="ion-text-left" *ngIf="userForm.get('correo_electronico').hasError(validation.type) && (userForm.get('correo_electronico').dirty || userForm.get('correo_electronico').touched)">
+              {{ validation.message }}
+            </ion-text>
+          </ng-container>              
+
+        </ion-col>
+      </ion-row>  
+      
+      <!-- <ion-row>
+        <ion-col size="12">
+          <ion-item lines="none">
+            <ion-icon name="newspaper-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+            <ion-label color="medium">Idioma</ion-label>
+            <ion-select interface="action-sheet" >
+              <ion-select-option>Español</ion-select-option>
+              <ion-select-option>Ingles</ion-select-option>
+            </ion-select>
+          </ion-item>      
+    
+        </ion-col>
+      </ion-row>   -->
+    
+      <ion-row class="ion-text-center">
+        <ion-col size="12">
+          <ion-checkbox color="success"></ion-checkbox>
+          <ion-label>
+            Recibir Notificaciones
+            <!-- <ion-text></ion-text> -->
+          </ion-label>
+        </ion-col>
+      </ion-row>  
+      
+      <ion-row>
+        <ion-col size="12">
+          <ion-button shape="round" 
+            expand="block" 
+            fill="solid" 
+            size="large"
+            type="submit"
+            color="secondary">Actualizar
+          </ion-button>                    
+        </ion-col>
+      </ion-row> 
+      
+      <ion-row class="ion-text-center">
+        <ion-col size="12">
+          <!-- <ion-button (click)="loginSrv.logout()" expand="block" fill="clear" shape="round">
+            Click me
+          </ion-button> -->
+          <a (click)="loginSrv.logout()" color="dark">Cerrar Sesi&oacute;n</a>
+        </ion-col>
+      </ion-row>  
+
+
+    </form>
+
+  </ion-grid>
+  
+
+
+
+
+</ion-content>

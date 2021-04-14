@@ -1,0 +1,129 @@
+<ion-grid>
+      <form [formGroup]="form">    
+        <ion-row>
+          <ion-col size="12">
+            <ion-text color="dark" class="ion-text-center">
+              <h6>Selecciona Direcci&oacute;n</h6>
+            </ion-text>      
+          </ion-col>
+    
+          <ion-col size="12">
+            <ion-item lines="none" color="light">
+              <ion-icon src="assets/images/dashboard/gps.svg" class="ion-padding-end" item-start size="large"></ion-icon>
+              <ion-label color="medium">Direcci&oacute;n</ion-label>
+
+              <ion-select [selectedText]="nombreDireccionConsumidortemp" [value]="selectDireccionInicialConsumidor" (ionChange)="changeDireccionConsumidor($event)">
+                <ion-select-option *ngFor="let item of listaDireccionesConsumidor"
+                [value]="item.id_direccion_usuario">  
+                  {{ item.nombre_direccion }} 
+                </ion-select-option>
+              </ion-select>
+
+            </ion-item>        
+          </ion-col>
+        </ion-row> 
+        
+        <ion-row>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-text color="dark" class="ion-text-center">
+              <h6>Selecciona reciclador</h6>
+            </ion-text>      
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-item lines="none" color="light">
+              <ion-icon name="person-circle-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+              <ion-label color="medium">Reciclador</ion-label>
+
+              <ion-select (ionChange)="getHorariosDisponibleReciclador($event)" formControlName="reciclador">
+                <ng-container *ngIf="listaRecicladores; else loadingListaRecicladores">
+                  <ion-select-option *ngFor="let item of listaRecicladores"
+                  [value]="item.id_usuario">  
+                    {{ item.username }} 
+                  </ion-select-option>
+                </ng-container>
+                <ng-template #loadingListaRecicladores>
+                  Por favor espere...
+                </ng-template>
+              </ion-select>
+
+            </ion-item>        
+          </ion-col>          
+    
+        </ion-row>
+
+
+        <ng-container *ngIf="!activaListaHorarios; else loading">
+
+          <ion-row>
+            <ion-col size="12">
+              <ion-text color="dark" class="ion-text-center">
+                <h6>Este reciclador recoge los:</h6>
+                <ng-container *ngIf="listaHorarioRecicladores.length === 0">
+                  <div class="ion-text-center">
+                    <small>Para ver horarios, seleccione reciclador.</small>
+                  </div>
+                </ng-container>
+              </ion-text>      
+            </ion-col>
+  
+            <ng-container>
+              <ion-col size="3" *ngFor="let item of listaHorarioRecicladores">
+                <small>
+                  <p>{{ item.dia }}</p>
+                  <p>{{ item.hora_inicio }}</p>
+                  <p>{{ item.hora_fin }}</p>
+                </small>
+              </ion-col>
+            </ng-container>
+      
+          </ion-row>  
+        </ng-container>
+  
+        <ng-template #loading>
+          <ion-row>
+            <ion-col size="4" *ngFor="let data of [1,2,3,4,5,6]">
+              <ion-skeleton-text animated style="width: 100%; height: 30px; border-radius: 5px;"></ion-skeleton-text>
+            </ion-col>
+          </ion-row>
+
+        </ng-template>
+
+        <ion-row>
+          <ion-col size="12">
+            <ion-item lines="none" color="light">
+              <ion-icon name="calendar-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+              <ion-label color="medium">Fecha</ion-label>
+              <ion-datetime 
+              displayFormat="DDD DD MMM, YYYY"
+              pickerFormat="DDD DD MMM, YYYY"
+              dayShortNames="Dom, Lun, Mar, Mie, Jue, Vie, Sab"
+              formControlName="dia"
+              (ionChange)="changeFechaRecolector($event);"
+              ></ion-datetime>
+            </ion-item>        
+          </ion-col>
+        </ion-row>
+    
+        <ng-container *ngIf="form.get('reciclador').value">
+
+          <ion-row>
+            <ion-col size="12">
+              <ion-text color="dark" class="ion-text-center">
+                <h6>Biografia</h6>
+              </ion-text>      
+            </ion-col>
+
+            <ion-col size="3">
+              <ion-avatar>
+                <ion-icon name="person-outline" item-start size="large"></ion-icon>
+              </ion-avatar>        
+            </ion-col>
+            <ion-col size="9">
+              {{ biografia[0].biografia ? biografia[0].biografia : "Sin datos Biogr&aacute;ficos"  }}
+            </ion-col>
+          </ion-row>      
+        </ng-container>
+      </form>
+
+  </ion-grid>  

@@ -1,0 +1,107 @@
+<ion-content class="ion-padding-top ion-padding-bottom fondo-varios">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      
+      <ion-col class="ion-align-self-center">
+        <app-logo-usuarios [title]="title" [subtitle]="subtitle"></app-logo-usuarios>
+        <app-login-redes></app-login-redes>
+        
+        <form [formGroup]="CONSUMIDOR_FORM" (ngSubmit)="onSubmit()">
+            <div class="ion-padding-top ion-padding-bottom">
+              <!-- <ion-row>
+                <ion-col size="12" class="ion-text-end">
+                  <ion-item lines="none">
+                    <ion-icon name="person-circle-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+                    <ion-input type="text" 
+                    formControlName="username"
+                    placeholder="Usuario *"></ion-input> 
+                    
+                    <div *ngIf="f.username.errors && (CONSUMIDOR_FORM.get('username').dirty || CONSUMIDOR_FORM.get('username').touched) ; then iconerror"></div>
+                    <ng-template #iconerror> <ion-icon slot="end" name="information-circle-outline" color="danger"></ion-icon></ng-template>
+          
+                  </ion-item>  
+                  <ng-container *ngFor="let validation of validator.validationMessages.username">
+                    <ion-text color="danger" *ngIf="CONSUMIDOR_FORM.get('username').hasError(validation.type) && (CONSUMIDOR_FORM.get('username').dirty || CONSUMIDOR_FORM.get('username').touched)">
+                      {{ validation.message }}
+                    </ion-text>
+                  </ng-container>     
+                </ion-col>
+              </ion-row> -->
+              <ion-row>
+                <ion-col size="12" class="ion-text-end">
+                  <ion-item lines="none">
+                    <ion-icon name="mail-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+                    <ion-input type="email" 
+                    formControlName="correo_electronico"
+                    placeholder="Correo electr&oacute;nico *"></ion-input>  
+                    
+                    <div *ngIf="f.correo_electronico.errors && (CONSUMIDOR_FORM.get('correo_electronico').dirty || CONSUMIDOR_FORM.get('correo_electronico').touched) ; then iconerror"></div>
+                    <ng-template #iconerror> <ion-icon slot="end" name="information-circle-outline" color="danger"></ion-icon></ng-template>                 
+                    
+                  </ion-item>  
+                  <ng-container *ngFor="let validation of validator.validationMessages.correo_electronico">
+                    <ion-text color="danger" *ngIf="CONSUMIDOR_FORM.get('correo_electronico').hasError(validation.type) && (CONSUMIDOR_FORM.get('correo_electronico').dirty || CONSUMIDOR_FORM.get('correo_electronico').touched)">
+                      {{ validation.message }}
+                    </ion-text>
+                  </ng-container>                             
+                </ion-col>
+              </ion-row>  
+              
+              <ion-row>
+                <ion-col size="12" class="ion-text-end">
+                  <ion-item lines="none">
+                    <ion-icon name="lock-closed-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+                    <ion-input type="password" 
+                    formControlName="contrasenia"
+                    placeholder="Contraseña *"></ion-input> 
+                    
+                    <div *ngIf="f.contrasenia.errors && (CONSUMIDOR_FORM.get('contrasenia').dirty || CONSUMIDOR_FORM.get('contrasenia').touched) ; then iconerror"></div>
+                    <ng-template #iconerror> <ion-icon slot="end" name="information-circle-outline" color="danger"></ion-icon></ng-template>          
+                  </ion-item> 
+          
+                  <ng-container *ngFor="let validation of validator.validationMessages.contrasenia">
+                    <ion-text color="danger" *ngIf="CONSUMIDOR_FORM.get('contrasenia').hasError(validation.type) && (CONSUMIDOR_FORM.get('contrasenia').dirty || CONSUMIDOR_FORM.get('contrasenia').touched)">
+                      {{ validation.message }}
+                    </ion-text>
+                  </ng-container>           
+                </ion-col>
+              </ion-row>
+            
+            
+              <ion-row>
+                <ion-col size="12">
+                  <ion-checkbox formControlName="terminos_condiciones" color="medium"></ion-checkbox>
+                  <ion-label color="light" size="small">
+                    <small class="verde-redis">
+                      He le&iacute;do y acepto todos los T&eacute;rminos y Condiciones
+                    </small>
+                  </ion-label>
+                </ion-col>
+              </ion-row>
+            
+              <ion-row>
+                <ion-col size="12">
+                  <ion-button shape="round" 
+                    expand="block" 
+                    fill="solid" 
+                    size="large"
+                    type="submit"
+                    [disabled]="CONSUMIDOR_FORM.invalid"
+                    color="secondary">Reg&iacute;strate
+                  </ion-button>                    
+                </ion-col>
+              </ion-row>           
+              
+              <ion-row>
+                <ion-col size="12" class="ion-text-center">
+                  <a class="verde-redis" routerLink="/auth/signin">Volver</a>
+                </ion-col>
+              </ion-row>
+            </div>
+        </form>
+
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

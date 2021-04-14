@@ -1,0 +1,45 @@
+<ion-header [translucent]="true" class="no-border" mode="ios">
+  <ion-toolbar>
+    <div class="ion-text-center" >
+      <img src="assets/images/login/logo.svg" class="img-dashboard">
+    </div>
+    <div class="ion-padding-top">
+      <ion-title size="large" class="ion-text-center title-dashboard" >Gracias por ser parte del cambio.</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12"> 
+        <ion-text color="dark" class="ion-text-center">
+        <h1>Sigue asi!</h1>
+        </ion-text> 
+      </ion-col>
+      <ion-col class="ion-text-center" size="12">
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+      </ion-col>
+
+      <ion-col size="12"> 
+        <div class="ion-text-justify">
+          <h6>
+            Recuerda que tus puntos ser&aacute;n acreditados una vez que el recuperador confirme
+            la recepci&oacute;n, cantidad y estado de los materiales que quieres sean REUSADOS REFACCIONADOS
+            O RECICLADOS.
+          </h6>
+        </div>        
+      </ion-col> 
+      
+      <ion-col size="12"> 
+        <ion-button (click)="closeModal()" expand="block" fill="clear" shape="round" color="secondary"> 
+          Aceptar
+        </ion-button>     
+      </ion-col>       
+
+    </ion-row> 
+  </ion-grid>
+
+
+</ion-content>

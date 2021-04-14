@@ -1,0 +1,113 @@
+<ion-header [translucent]="true" class="no-border" mode="ios">
+  <ion-toolbar>
+    <div class="ion-text-center" >
+      <img src="assets/images/login/logo.svg" class="img-dashboard">
+    </div>
+    <div class="ion-padding-top">
+      <ion-title size="large" class="ion-text-center title-dashboard" >Ya eres parte del cambio.</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-margin-top ion-padding-bottom">
+
+  <ion-grid fixed="true">
+
+    <ion-row>
+
+      <ion-col class="ion-text-center" size="12">
+        <ion-text size="large" class="ion-text-capitalize"> Hola {{ usuario.username }} </ion-text>
+        <!-- <ion-button color="light" class="ion-text-right">
+          <ion-icon name="notifications-circle-outline" color="success"></ion-icon>
+          <ion-label>3</ion-label>
+        </ion-button> -->
+
+      </ion-col>
+      <!--<ion-col size="2">
+      
+         <ion-icon name="notifications-circle-outline" color="success" size="medium"></ion-icon>
+        <ion-badge>3</ion-badge>
+      </ion-col> -->      
+
+      <!-- <ng-container *ngIf=" usuario.opcion === 1; else menuDos">
+        <ion-col size="12">
+          <app-landing-consumidor></app-landing-consumidor>
+        </ion-col>
+      </ng-container> -->
+
+      <!-- <ng-template #menuDos>
+        <ion-col size="12">
+          <app-landing-reciclador></app-landing-reciclador>
+        </ion-col>
+      </ng-template> -->
+
+      <ion-col size="12">
+        <app-landing-consumidor></app-landing-consumidor>
+      </ion-col>
+
+      <ion-col size="12">
+
+        <ion-slides pager="true" [options]="slideOpts" #Slider (ionSlidesDidLoad)="afterslidesLoad(Slider)">
+
+          <ion-slide (click)="goToSite('https://www.redisimex.com/')">
+            <div class="slide">
+              <img src="assets/images/dashboard/redis.png"/>
+            </div>
+          </ion-slide>          
+
+          <ion-slide (click)="goToSite('http://www.plasticovive.com/')">
+            <div class="slide">
+              <img src="assets/images/dashboard/plasticons.png" />
+            </div>
+          </ion-slide>      
+          
+          <ion-slide>
+            <div class="slide">
+              <img src="assets/images/dashboard/convenio.png"/>
+            </div>
+          </ion-slide>              
+
+
+        </ion-slides>
+
+
+        <!-- <ion-card class="ion-no-margin">
+          <ion-card-content>
+            <img src="assets/images/dashboard/nestle.png" alt="">
+          </ion-card-content>
+        </ion-card>         -->
+      </ion-col>
+
+      <ion-col size="12" class="ion-text-center">
+        <ion-button 
+          shape="round" 
+          fill="solid" 
+          size="medium"
+          type="button"
+          expand="full"
+          href="https://www.redisimex.com/redis/blog/"
+          rel="external"
+          color="secondary">Noticias
+        </ion-button>         
+      </ion-col>      
+
+      <ion-col size="12" class="ion-text-center">
+        <ion-button 
+          shape="round" 
+          fill="solid" 
+          size="medium"
+          type="button"
+          expand="full"
+          (click)="showModalInfoQueReciclar()"
+          color="secondary">
+          <small>
+            ¿Que materiales debo separar para aprovechar?
+          </small>
+        </ion-button>         
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

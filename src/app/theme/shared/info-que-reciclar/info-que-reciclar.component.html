@@ -1,0 +1,135 @@
+<ion-header [translucent]="true" class="no-border" mode="ios">
+  <ion-toolbar>
+    <div class="ion-text-center" >
+      <img src="assets/images/login/logo.png" class="img-dashboard">
+    </div>
+    <div class="ion-padding-top">
+      <ion-title size="large" class="ion-text-center title-dashboard">
+        Recuerda que casi todo es Reusable, Reparable y Reciclable, solo aprende en nuestra guía.
+      </ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid fixed class="ion-no-padding">
+    <ion-row>
+
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header color="secondary">
+            <ion-row>
+              <ion-col size="6">
+                <ion-text color="light">
+                  <h3>Empaques y Embalajes</h3>
+                </ion-text>
+              </ion-col>
+              <ion-col size="6" class="ion-text-end">
+                <img src="assets/images/reciclar/nestle/nestle.png" alt="" width="50%">
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
+        
+          <ion-card-content>
+
+            <ion-row>
+              <ion-col size="3" *ngFor="let items of arrayImagesNestle">
+                <ion-avatar>
+                  <img src="assets/images/reciclar/nestle/{{items}}" alt="">
+                </ion-avatar>
+              </ion-col>
+            </ion-row>
+
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+      
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header color="secondary">
+            <ion-row>
+              <ion-col size="6">
+                <ion-text color="light">
+                  <h3>Empaques y Embalajes</h3>
+                </ion-text>
+              </ion-col>
+              <ion-col size="6" class="ion-text-end">
+                <img src="assets/images/reciclar/kimberly/kimberly.png" alt="">
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
+        
+          <ion-card-content>
+
+            <ion-row>
+              <ion-col size="12">
+                <img src="assets/images/reciclar/kimberly/todo.png" alt="">
+              </ion-col>
+            </ion-row>
+
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header color="secondary">
+            <ion-row>
+              <ion-col size="6">
+                <ion-text color="light">
+                  <h3>Pl&aacute;sticos</h3>
+                </ion-text>
+              </ion-col>
+              <ion-col size="3" class="ion-text-end">
+                <img src="assets/images/reciclar/plasticos/water.png" alt="" width="50%">
+              </ion-col>
+              <ion-col size="3" class="ion-text-end">
+                <img src="assets/images/reciclar/plasticos/raster.png" color="light" alt="" width="50%">
+              </ion-col>              
+            </ion-row>
+          </ion-card-header>
+        
+          <ion-card-content>
+
+            <ion-row *ngFor="let items of arrayPlasticos">
+              <ion-col size="10">
+                <ion-text color="dark">
+                  <h4>{{items.nombre}}</h4>
+                </ion-text>
+              </ion-col>
+              <ion-col size="2" class="ion-text-end">
+                <ng-container *ngIf="!items.status; else iconoerror">
+                  <ion-icon name="close" color="danger" size="large"></ion-icon>
+                </ng-container>
+                <ng-template #iconoerror>
+                  <ion-icon name="checkbox" color="success" size="large"></ion-icon>
+                </ng-template>
+              </ion-col>
+
+            </ion-row>            
+
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+
+      <app-materiales [datos]="arrayTetrapack" [title]="'Tetra Pack'" [image]="'tetrapack/tetra'"></app-materiales>
+      <app-materiales [datos]="arrayVidrio" [title]="'Vidrio'" [image]="'vidrios/vidrio'"></app-materiales>
+      <app-materiales [datos]="arrayPapel" [title]="'Papel'" [image]="'papeles/papel'"></app-materiales>
+      <app-materiales [datos]="arrayCarton" [title]="'Cart&oacute;n'" [image]="'cartones/carton'"></app-materiales>
+      <app-materiales [datos]="arrayMetal" [title]="'Metal'" [image]="'metales/metal'"></app-materiales>      
+
+      <ion-col size="12"> 
+        <ion-button (click)="closeModal()" expand="block" fill="clear" shape="round" color="secondary"> 
+          Aceptar
+        </ion-button>     
+      </ion-col>       
+
+    </ion-row> 
+  </ion-grid>
+
+
+</ion-content>

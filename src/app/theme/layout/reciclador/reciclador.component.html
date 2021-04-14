@@ -1,0 +1,80 @@
+<ion-content class="ion-padding-top ion-padding-bottom fondo-varios">
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+
+      <ion-col class="ion-align-self-center">
+
+        <app-logo-usuarios [title]="title" [subtitle]="subtitle"></app-logo-usuarios>
+        
+        <form [formGroup]="recicladorForm" (ngSubmit)="onSubmit()">
+          <div class="ion-padding-top ion-padding-bottom">
+            
+            <ion-row>
+              <ion-col size="12">
+                <ion-item lines="none">
+                  <ion-icon name="person-circle-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+                  <ion-input class="ion-padding-start"
+                  formControlName="nombre"
+                  autofocus="true"
+                  clearInput="true"
+                  spellcheck="true"
+                   type="text" placeholder="Nombres *"></ion-input>                
+                </ion-item>                     
+              </ion-col>
+            </ion-row>  
+
+            <ion-row>
+              <ion-col size="12">
+                <ion-item lines="none">
+                  <ion-icon name="person-circle-outline" class="ion-padding-end" item-start size="large"></ion-icon>
+                  <ion-input class="ion-padding-start"
+                  formControlName="apellido"
+                  clearInput="true"
+                   type="text" placeholder="Apellidos *"></ion-input>                
+                </ion-item>                     
+              </ion-col>
+            </ion-row>  
+
+            <ion-row>
+              <ion-col size="12">
+                <ion-item lines="none">
+                  <ion-icon name="call" class="ion-padding-end" item-start size="large"></ion-icon>
+                  <ion-input class="ion-padding-start"
+                  formControlName="telefono"
+                  clearInput="true"                
+                  type="text"
+                  placeholder="Tel&eacute;fono *"></ion-input>                
+                </ion-item>                     
+              </ion-col>
+            </ion-row>                 
+
+            <ion-row>
+              <ion-col size="12">
+                <ion-button shape="round" 
+                  expand="block" 
+                  fill="solid" 
+                  size="large"
+                  type="submit"
+                  [disabled]="recicladorForm.invalid"
+                  color="secondary">Reg&iacute;strate
+                  
+                </ion-button>                    
+              </ion-col>
+            </ion-row> 
+            
+            <ion-row>
+              <ion-col size="12" class="ion-text-center">
+                <a class="verde-redis" routerLink="/auth/signin">Volver</a>
+              </ion-col>
+            </ion-row>
+            
+          </div>  
+        </form>
+
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

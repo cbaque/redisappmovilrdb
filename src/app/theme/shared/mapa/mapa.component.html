@@ -1,0 +1,46 @@
+<ion-card>
+  <ion-card-content>
+    <div #map class="map-responsive"></div>
+  </ion-card-content>
+</ion-card>
+
+<!-- <form [formGroup]="form">
+
+  <ng-container formArrayName="direccionNueva">
+
+    <ng-container [formGroupName]="i" *ngFor="let item of Listadireciones.controls; index as i">
+      <ion-item class="ion-no-padding-top">
+        <ion-label>{{ item.get('direccion').value }}</ion-label>
+        
+        <ion-toggle formControlName="active"></ion-toggle>
+      </ion-item>
+    </ng-container>
+
+  </ng-container>
+
+</form> -->
+<!-- <ion-text color="light">
+  Listado de Ubicaciones
+</ion-text>
+
+<form [formGroup]="form">
+  <ng-container formArrayName="direcciones">
+    <ion-list>
+      <ng-container [formGroupName]="i" *ngFor="let item of Listadireciones.controls; index as i">
+        <ion-item-sliding>
+
+          <ion-item >
+            {{ item.get('direccion').value }}
+          </ion-item>
+
+          <ion-item-options side="end">
+            <ion-item-option color="danger" (click)="deleteDireccion( i )">Eliminar</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ng-container>
+
+    </ion-list>     
+  </ng-container>
+ 
+</form> -->
+
